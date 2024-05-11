@@ -28,6 +28,7 @@ def get_schema(engine):
         schema_info[table_name] = [col['name'] for col in inspector.get_columns(table_name)]
     return schema_info
 
+api_key = st.secrets["google_api_key"]
 st.title("Database Connection and Query App")
 
 with st.expander("Setup Database Connection"):
@@ -37,7 +38,7 @@ with st.expander("Setup Database Connection"):
     db_host = st.text_input("Database Host")
     db_port = st.number_input("Database Port", min_value=1, max_value=65535, value=3306)
     db_name = st.text_input("Database Name")
-    api_key = st.text_input("Google API Key", type="password")
+    
 
     if st.button("Setup Database and Model"):
         try:
